@@ -27,7 +27,6 @@ export default function DetailsItem() {
 
     async function rent() {
         let msgType = 'success'
-        console.log(`Bearer ${JSON.parse(token)}`)
         const data = await api.patch(`items/rent/${item._id}`, {
 
             Authorization: `Bearer ${JSON.parse(token)}`
@@ -74,13 +73,15 @@ export default function DetailsItem() {
                                 {index === current && (
 
                                     <Image
-                                        src={`${process.env.REACT_APP_API}/images/items/${image}`}
+                                        src={image}
                                         alt={item.title}
                                         key={index}
                                     />
                                 )}
                             </>
                         )
+
+                        
                     })}
 
                     {item.images.length > 1 && (
@@ -127,20 +128,4 @@ export default function DetailsItem() {
 
     )
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

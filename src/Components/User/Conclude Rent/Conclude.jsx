@@ -73,7 +73,7 @@ export default function Conclude() {
                                 {index === current && (
 
                                     <Image
-                                        src={`${process.env.REACT_APP_API}/images/items/${image}`}
+                                        src={image}
                                         alt={item.title}
                                         key={index}
                                     />

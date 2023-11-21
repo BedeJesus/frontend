@@ -23,6 +23,12 @@ export const Container = styled.div`
     @media(max-width : 850px) {
         width: 47.5%;
         height: 25em;
+        
+    } 
+
+    @media(max-width : 400px) {
+        box-shadow: none;
+        
     } 
 
     :hover {
@@ -82,6 +88,11 @@ export const Status = styled.div`
     font-weight: bold;
     margin-bottom: 5%;
     font-size: 1.5em;
+
+    @media(max-width : 400px) {
+        font-size: 1.1em;
+        
+    } 
 `
 
 

@@ -37,7 +37,7 @@ export default function MyRents() {
                             <ItemLink to={`item/${item._id}`}> {item.title} </ItemLink>
 
                             <img
-                                src={`${process.env.REACT_APP_API}/images/items/${item.images[0]}`}
+                                src={item.images[0]}
                                 alt={item.name}
                             />
 

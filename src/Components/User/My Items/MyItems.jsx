@@ -11,6 +11,8 @@ export default function MyItems() {
     const [items, setItems] = useState([])
     const [token] = useState(localStorage.getItem('token') || '')
     const { setFlashMessage } = useFlashMessage()
+    const [loading, setLoading] = useState(true)
+
 
     const [currentPage, setCurrentPage] = useState(1)
     const itemsInPage = 15
@@ -35,6 +37,7 @@ export default function MyItems() {
         })
             .then((response) => {
                 setItems(response.data.items)
+                setLoading(false)
             })
     }, [token])
 
@@ -95,6 +98,8 @@ export default function MyItems() {
 
             </>
 
+           
+
             {items.length > 1 && (
 
                 <Filter>
@@ -113,28 +118,35 @@ export default function MyItems() {
                 </Filter>
             )}
 
+            {!loading ? (
 
-            <ItemCards>
+                <ItemCards>
+                
+                    {items.length > 0 &&
+                        currentItems.map((item) => (
+                        
+                            <Card
+                                item={item}
+                                available={item.available}
+                                name={item.title}
+                                image={`${process.env.REACT_APP_API}/images/items/${item.images[0]}`}
+                                price={item.price}
+                                description={item.short_desc}
+                                button={Button(item)}
+                            />
+                        ))}
+    
+                    {items.length === 0 && (
+                        <h3>Você não tem nenhum item cadastrado</h3>
+                    )}
+    
+                </ItemCards>
 
-                {items.length > 0 &&
-                    currentItems.map((item) => (
+            ) : (
 
-                        <Card
-                            item={item}
-                            available={item.available}
-                            name={item.title}
-                            image={`${process.env.REACT_APP_API}/images/items/${item.images[0]}`}
-                            price={item.price}
-                            description={item.short_desc}
-                            button={Button(item)}
-                        />
-                    ))}
+                <h1>Carregando</h1>
 
-                {items.length === 0 && (
-                    <h3>Você não tem nenhum item cadastrado</h3>
-                )}
-
-            </ItemCards>
+            )}
 
         </Container>
 

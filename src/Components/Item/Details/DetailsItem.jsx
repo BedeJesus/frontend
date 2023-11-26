@@ -15,11 +15,14 @@ export default function DetailsItem() {
     const { id } = useParams()
     const { setFlashMessage } = useFlashMessage()
     const [token] = useState(localStorage.getItem('token') || '')
+    const [loading, setLoading] = useState(true)
+
 
 
     useEffect(() => {
         api.get(`/items/${id}`).then((response) => {
             setItem(response.data.item)
+            setLoading(false)
         })
 
     }, [id])
@@ -59,68 +62,83 @@ export default function DetailsItem() {
 
     return (
         <Container>
+
             <h1>{item.title}</h1>
 
             <Box>
 
-                <Slider>
+                {!loading ? (
+                    <>
 
-                    {item.images.map((image, index) => {
 
-                        return (
-                            <>
-                                {index === current && (
+                        <Slider>
 
-                                    <Image
-                                        src={image}
-                                        alt={item.title}
-                                        key={index}
-                                    />
-                                )}
-                            </>
-                        )
+                            {item.images.map((image, index) => {
 
-                        
-                    })}
+                                return (
+                                    <>
+                                        {index === current && (
 
-                    {item.images.length > 1 && (
+                                            <Image
+                                                src={image}
+                                                alt={item.title}
+                                                key={index}
+                                            />
+                                        )}
+                                    </>
+                                )
 
-                        <Arrows>
-                            <LeftArrow onClick={prevSlide} />
-                            <RightArrow onClick={nextSlide} />
-                        </Arrows>
-                    )}
 
-                </Slider>
+                            })}
 
-                <Data>
+                            {item.images.length > 1 && (
 
-                    <h1>Descrição Completa</h1>
-                    <LongDescription>{item.long_desc}</LongDescription>
+                                <Arrows>
+                                    <LeftArrow onClick={prevSlide} />
+                                    <RightArrow onClick={nextSlide} />
+                                </Arrows>
+                            )}
 
-                    <Info>
+                        </Slider>
 
-                        <InfoItem>
-                            <h2>Localização do item</h2>
-                            <Price>{item.user.address}</Price>
-                        </InfoItem>
+                        <Data>
 
-                        <InfoItem>
-                            <h2>Valor da locação/dia</h2>
-                            <Price>{`R$${item.price.toLocaleString('pt-br', { minimumFractionDigits: 2 })}`}</Price>
-                        </InfoItem>
+                            <h1>Descrição Completa</h1>
+                            <LongDescription>{item.long_desc}</LongDescription>
 
-                    </Info>
+                            <Info>
 
-                    {token ? (
-                        <Button onClick={rent}>Solicitar uma visita</Button>
-                    ) : (
-                        <CreateCount> Você precisa &nbsp;<Highlight to='/register'> criar uma conta </Highlight> &nbsp; para solicitar a locação </CreateCount>
-                    )}
+                                <InfoItem>
+                                    <h2>Localização do item</h2>
+                                    <Price>{item.user.address}</Price>
+                                </InfoItem>
 
-                </Data>
+                                <InfoItem>
+                                    <h2>Valor da locação/dia</h2>
+                                    <Price>{`R$${item.price.toLocaleString('pt-br', { minimumFractionDigits: 2 })}`}</Price>
+                                </InfoItem>
+
+                            </Info>
+
+                            {token ? (
+                                <Button onClick={rent}>Solicitar uma visita</Button>
+                            ) : (
+                                <CreateCount> Você precisa &nbsp;<Highlight to='/register'> criar uma conta </Highlight> &nbsp; para solicitar a locação </CreateCount>
+                            )}
+
+                        </Data>
+
+                    </>
+                    
+                ) : (
+
+                    <p>Carregando</p>
+
+                )}
 
             </Box>
+
+
 
 
         </Container>

@@ -102,7 +102,7 @@ export default function EditItem(props) {
             const imageUrls = await Promise.all(promises);
             imagesArray = imageUrls;
 
-            setitem(prevItem => {
+            setItem(prevItem => {
               return { ...prevItem, images: imagesArray };
             });
             

@@ -32,7 +32,8 @@ export default function MyItems() {
     useEffect(() => {
         api.get('/items/myitems', {
             headers: {
-                Authorization: `Bearer ${JSON.parse(token)}`
+                Authorization: `Bearer ${JSON.parse(token)}`,
+                'Accept-Encoding': 'gzip',
             }
         })
             .then((response) => {

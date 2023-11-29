@@ -33,7 +33,6 @@ export default function MyItems() {
         api.get('/items/myitems', {
             headers: {
                 Authorization: `Bearer ${JSON.parse(token)}`,
-                'Accept-Encoding': 'gzip',
             }
         })
             .then((response) => {

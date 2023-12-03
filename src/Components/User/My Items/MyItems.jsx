@@ -42,6 +42,7 @@ export default function MyItems() {
     }, [token])
 
 
+    
     useEffect(() => {
         api.get('/users/checkuser', {
             headers: {

@@ -8,6 +8,7 @@ export default function MyRents() {
     const [items, setItems] = useState([])
     const [token] = useState(localStorage.getItem('token') || '')
     const [loading, setLoading] = useState(true)
+    
 
     useEffect(() => {
         api.get('/items/myrents', {
@@ -60,7 +61,7 @@ export default function MyRents() {
                                             Envie um e-mail
                                         </Email>
 
-                                        <span> <UserCircle size={45} />Fale com {item.user.name} </span>
+                                        <span> <UserCircle size={45} />Fale com {item.user.name.substring(0, item.user.name.indexOf(' '))} </span>
 
                                     </Options>
 

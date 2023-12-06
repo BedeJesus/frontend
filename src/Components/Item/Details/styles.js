@@ -177,10 +177,11 @@ export const Arrows = styled.div`
 
 export const Highlight = styled(Link)`
 
- display: flex;
- padding-left:.1em; 
- padding-right:.1em; 
- border-radius: 10px;
+  display: flex;
+  padding-left:.1em; 
+  padding-right:.1em; 
+  border-radius: 10px;
+  align-self: center;
   transition: .2s;
   text-decoration: none;
   background-color: rgb(255, 56, 86);
@@ -198,13 +199,22 @@ export const Highlight = styled(Link)`
  transition: 50ms;
 }
 
+
 `
 
 export const CreateCount = styled.span`
 
     display: flex;
     font-size: 1.6em;
-    justify-content: center;    
+    justify-content: center;  
+
+    @media(max-width : 800px) {
+
+      flex-direction:column ;
+      text-align: center;
+      text
+    } 
+    
 
 `
 

@@ -123,7 +123,9 @@ export default function DetailsItem() {
                             {token ? (
                                 <Button onClick={rent}>Solicitar uma visita</Button>
                             ) : (
-                                <CreateCount> Você precisa &nbsp;<Highlight to='/register'> criar uma conta </Highlight> &nbsp; para solicitar a locação </CreateCount>
+                                <CreateCount> Você precisa &nbsp;
+                                <Highlight to='/register'> criar uma conta </Highlight> 
+                                &nbsp; para solicitar a locação </CreateCount>
                             )}
 
                         </Data>

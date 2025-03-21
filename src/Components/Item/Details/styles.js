@@ -52,7 +52,7 @@ export const InfoItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  
 `
 
 export const Slider = styled.div`
@@ -71,19 +71,11 @@ export const Image = styled.img`
   margin-top: 3em;
   border: 2px solid ${props => props.theme.colors.primary_details};
 
-   @media(max-width : 800px) {
+  @media(max-width : 600px) {
+    width: 20em;
+    height: 20em;
+    }
 
-    width: 19em;
-    height: 19em;
-  } 
-   
-
-  @media(max-width : 350px) {
-
-    width: 16em;
-    height: 16em;
-  }   
-   
 `
 
 export const Data = styled.div` 
@@ -177,16 +169,16 @@ export const Arrows = styled.div`
 
 export const Highlight = styled(Link)`
 
-  display: flex;
-  padding-left:.1em; 
-  padding-right:.1em; 
-  border-radius: 10px;
-  align-self: center;
+ display: flex;
+ padding-left:.1em; 
+ padding-right:.1em; 
+ border-radius: 10px;
   transition: .2s;
   text-decoration: none;
   background-color: rgb(255, 56, 86);
   color: hsl(0, 0%, 100%);
   box-shadow: rgb(201, 46, 70) 0px 10px 0px 0px;
+  justify-content: center; 
   
   :hover{
       color:${props => props.theme.colors.primary_text};
@@ -199,22 +191,17 @@ export const Highlight = styled(Link)`
  transition: 50ms;
 }
 
-
 `
 
 export const CreateCount = styled.span`
 
     display: flex;
     font-size: 1.6em;
-    justify-content: center;  
+    justify-content: center;    
 
-    @media(max-width : 800px) {
-
-      flex-direction:column ;
-      text-align: center;
-      text
-    } 
-    
+    @media(max-width : 600px) {
+      flex-direction: column;
+    }
 
 `
 

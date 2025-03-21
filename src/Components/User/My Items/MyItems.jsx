@@ -5,6 +5,7 @@ import api from '../../../utils/api'
 import Card from '../../Card/Card'
 import { ItemCards, Container, Filter, Input } from './styles'
 import Pagination from '../../Pagination/Pagination'
+import Loader from '../../Loader/Loader'
 
 export default function MyItems() {
 
@@ -101,7 +102,7 @@ export default function MyItems() {
 
            
 
-            {items.length > 1 && (
+            {items.length > 1  && !loading && (
 
                 <Filter>
 
@@ -145,7 +146,7 @@ export default function MyItems() {
 
             ) : (
 
-                <h1>Carregando</h1>
+                <Loader/>
 
             )}
 

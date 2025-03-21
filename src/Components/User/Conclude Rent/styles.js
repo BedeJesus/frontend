@@ -25,18 +25,10 @@ export const Image = styled.img`
   margin-top: 3em;
   border: 2px solid ${props => props.theme.colors.primary_details};
 
-  @media(max-width : 800px) {
-
-    width: 19em;
-    height: 19em;
-  } 
-
-
-  @media(max-width : 350px) {
-
-    width: 16em;
-    height: 16em;
-  }  
+  @media(max-width : 600px) {
+    width: 20em;
+    height: 20em;
+  }
 `
 
 
@@ -70,15 +62,16 @@ export const Slider = styled.div`
 
 export const Data = styled.div` 
 
-  max-width: 50em;
-  display: flex;
-  flex-direction: column;
-  align-items:center;
-  justify-content: center;
-  h2{
-    color: ${props => props.theme.colors.primary_text};
-    margin: .5em 0 ;
-  }
+    max-width: 50em;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: center;
+
+    h2{
+      color: ${props => props.theme.colors.primary_text};
+      margin: .5em 0 ;
+    }
 
 `
 

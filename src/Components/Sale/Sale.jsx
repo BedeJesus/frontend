@@ -3,6 +3,7 @@ import Card from '../Card/Card'
 import api from "../../utils/api";
 import { Container, Items, Input, Filter } from './styles'
 import Pagination from "../Pagination/Pagination";
+import Loader from "../Loader/Loader";
 
 export default function Sale(props) {
 
@@ -86,7 +87,7 @@ export default function Sale(props) {
 
             ) : (
 
-                <h1>Carregando</h1>
+                <Loader/>
 
             )}
 

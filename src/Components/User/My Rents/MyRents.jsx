@@ -2,6 +2,7 @@ import api from '../../../utils/api'
 import { useEffect, useState } from 'react'
 import { Container, Description, ItemLink, Item, Rents, WhatsApp, Email, Options } from './styles'
 import { WhatsappLogo, UserCircle, Envelope } from 'phosphor-react'
+import Loader from '../../Loader/Loader'
 
 export default function MyRents() {
 
@@ -84,7 +85,7 @@ export default function MyRents() {
 
             ) : (
             
-                <h1>Carregando</h1>
+                <Loader />
             
             )}
 

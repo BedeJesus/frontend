@@ -8,6 +8,7 @@ import {
     Price, CreateCount, Box, RightArrow, LeftArrow,
     Arrows, Slider, Image, Info, InfoItem, Input, Highlight
 } from './styles'
+import Loader from '../../Loader/Loader'
 
 export default function DetailsItem() {
 
@@ -16,7 +17,7 @@ export default function DetailsItem() {
     const { setFlashMessage } = useFlashMessage()
     const [token] = useState(localStorage.getItem('token') || '')
     const [loading, setLoading] = useState(true)
-
+    const [reqLoading, setReqLoading] = useState(false)
 
 
     useEffect(() => {
@@ -28,6 +29,7 @@ export default function DetailsItem() {
     }, [id])
 
     async function rent() {
+        setReqLoading(true)
         let msgType = 'success'
         const data = await api.patch(`items/rent/${item._id}`, {
 
@@ -39,7 +41,7 @@ export default function DetailsItem() {
             msgType = 'error'
             return err.response.data
         })
-
+        setReqLoading(false)
         setFlashMessage(data.message, msgType)
     }
 
@@ -121,7 +123,7 @@ export default function DetailsItem() {
                             </Info>
 
                             {token ? (
-                                <Button onClick={rent}>Solicitar uma visita</Button>
+                                <Button onClick={rent} disabled={reqLoading}>{!reqLoading ? "Solicitar uma Visita" : "Solicitando Visita..."}</Button>
                             ) : (
                                 <CreateCount> Você precisa &nbsp;
                                 <Highlight to='/register'> criar uma conta </Highlight> 
@@ -134,7 +136,7 @@ export default function DetailsItem() {
                     
                 ) : (
 
-                    <p>Carregando</p>
+                    <Loader />
 
                 )}
 

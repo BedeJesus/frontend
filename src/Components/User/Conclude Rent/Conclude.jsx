@@ -2,11 +2,14 @@ import api from "../../../utils/api"
 import useFlashMessage from "../../../hooks/useFlashMessage"
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
+import {useNavigate } from "react-router-dom";
 
 import { Container, Box, Slider, Data, Button, Arrows, LeftArrow, RightArrow, Image } from './styles'
 import Loader from "../../Loader/Loader"
 
 export default function Conclude() {
+
+    const navigate = useNavigate()
 
     const [item, setItem] = useState({})
     const { id } = useParams()
@@ -112,7 +115,7 @@ export default function Conclude() {
                             <h2>Valor da locação: {`R$${item.price.toLocaleString('pt-br', { minimumFractionDigits: 2 })}`}</h2>
 
                             {token && (
-                                <Button onClick={() => concludeRent(item._id)}>Concluir Locação</Button>
+                                <Button onClick={() => concludeRent(item._id)} disabled={concludeLoading}>{!concludeLoading ? "Concluir Locação" : "Concluindo Locação..."}</Button>
                             )}
 
                         </Data>

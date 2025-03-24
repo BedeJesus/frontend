@@ -62,7 +62,7 @@ export default function MyRents() {
                                             Envie um e-mail
                                         </Email>
 
-                                        <span> <UserCircle size={45} />Fale com {item.user.name.substring(0, item.user.name.indexOf(' '))} </span>
+                                        <span> <UserCircle size={45} />Fale com {item.user.name.substring(0, item.user.name.indexOf(' ')) || item.user.name} </span>
 
                                     </Options>
 

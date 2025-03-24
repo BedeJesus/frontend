@@ -1,4 +1,4 @@
-import { Box, Container, Buttons, Error } from './styles'
+import { Box, Container, Buttons, Error, Button } from './styles'
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import PayPalPayment from '../Pay Pal Button/PayPalPayment';
 import api from '../../../../utils/api';
